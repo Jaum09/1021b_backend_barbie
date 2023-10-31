@@ -29,8 +29,9 @@ app.get('/filmes',(req,res)=>{
 
 app.get('/filmes/:id',(req,res)=>{
     const id = parseInt(req.params.id)
-    const filme = filmesCadastros.find(filme=>filme.id === id)
-    if(!filme) return res.status(404).send('Filme não encontrado')
+    //FIND para buscar um filme pelo id e retornar para o usuário
+    const filme = filmesCadastros.find(filme => filme.id === id)
+    if(!filme) return res.status(404).send("Filme não encontrado")
     res.status(200).send(filme)
 })
 
