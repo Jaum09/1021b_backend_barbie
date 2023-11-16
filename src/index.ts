@@ -1,11 +1,12 @@
 import express from 'express'
 import BancoMongoDB from './infra/banco/banco-mongodb'
 import ListaFilme from './aplicacao/lista-filme.use-case'
-import SalvaFilme from './aplicacao/salva-filme.use-case'
+import SalvarFilme from './aplicacao/salva-filme.use-case'
 
 const bancoMongoDB = new BancoMongoDB()
 const app = express()
 app.use(express.json())
+
 //Tenho que ter uma rota post para cadastrar um filme
 type Filme = {
     id:number,
@@ -13,6 +14,7 @@ type Filme = {
     descricao:string,
     imagem:string
 }
+
 let filmesCadastrados:Filme[] = []
 app.post('/filmes', async (req,res)=>{
     const {id, titulo, descricao, imagem} = req.body
@@ -23,10 +25,11 @@ app.post('/filmes', async (req,res)=>{
         imagem
     }
     //como salvo o filme
-    const salvarFilme = new SalvaFilme(bancoMongoDB)
+    const salvarFilme = new SalvarFilme(bancoMongoDB)
     const filmes = await salvarFilme.execute(filme)
     res.status(201).send(filmes)
 })
+
 app.get('/filmes', async(req,res)=>{
     //usem o listarFilme para listar os filmes
     
