@@ -37,7 +37,7 @@ export default class BancoMongoDB implements  FilmeRepositorioInterface {
     }
    
   async listar(): Promise<Filme[]> {
-    const filmes = await this.filmeModelo.find({}, { _id: 1, titulo: 1, descricao: 1, imagem: 1 });
+    const filmes = await this.filmeModelo.find({});
     return filmes.map((filme: any) => ({
         id: filme._id,
         titulo: filme.titulo,
