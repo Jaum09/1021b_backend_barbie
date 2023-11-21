@@ -1,11 +1,13 @@
 import express from 'express'
+import cors from 'cors'
 import BancoMongoDB from './infra/banco/banco-mongodb'
 import ListaFilme from './aplicacao/lista-filme.use-case'
 import SalvarFilme from './aplicacao/salva-filme.use-case'
 
-const bancoMongoDB = new BancoMongoDB()
 const app = express()
 app.use(express.json())
+app.use(cors())
+const bancoMongoDB = new BancoMongoDB()
 
 //Tenho que ter uma rota post para cadastrar um filme
 type Filme = {
