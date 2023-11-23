@@ -44,12 +44,6 @@ describe('BancoEmMemoria', () => {
             descricao:'Descrição do filme 2',
             imagem:'imagem.jpg'
         }
-        const filme3 = {
-            id:3,
-            titulo:'filme 3',
-            descricao:'Descrição do filme 3',
-            imagem:'imagem.jpg'
-        }
         const bancoEmMemoria = new BancoEmMemoria()
         bancoEmMemoria.filmes.push(filme)
         bancoEmMemoria.filmes.push(filme2)
